@@ -10,18 +10,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@tanstack/actions": "0.0.1-beta.155",
-    "@tanstack/loaders": "0.0.1-beta.155",
-    "@tanstack/react-actions": "0.0.1-beta.155",
-    "@tanstack/react-loaders": "0.0.1-beta.155",
     "@tanstack/react-router": "0.0.1-beta.155",
-    "@tanstack/react-start": "0.0.1-beta.155",
-    "@tanstack/react-store": "0.0.1-beta.155",
-    "@tanstack/router": "0.0.1-beta.155",
-    "@tanstack/router-cli": "0.0.1-beta.155",
-    "@tanstack/router-core": "0.0.1-beta.155",
-    "@tanstack/router-devtools": "0.0.1-beta.155",
-    "@tanstack/store": "0.0.1-beta.155",
     "@vitejs/plugin-react": "^4.0.4",
     "clsx": "^2.0.0",
     "react": "^18.2.0",

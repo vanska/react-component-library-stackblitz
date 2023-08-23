@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react"
+import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
 import {
   Outlet,
@@ -8,6 +8,8 @@ import {
   Route,
   RootRoute,
 } from "@tanstack/react-router"
+import { CarouselPage } from "./pages/CarouselPage"
+import "./index.css"
 
 // Create a root route
 const rootRoute = new RootRoute({
@@ -18,7 +20,7 @@ function Root() {
   return (
     <>
       <div>
-        <Link to="/">Home</Link> <Link to="/about">About</Link>
+        <Link to="/">Home</Link> <Link to="/carousel">Carousel</Link>
       </div>
       <hr />
       <Outlet />
@@ -43,12 +45,12 @@ function Index() {
 
 const aboutRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: "/about",
+  path: "/carousel",
   component: About,
 })
 
 function About() {
-  return <div>Hello from About!!!!</div>
+  return <CarouselPage />
 }
 
 // Create the route tree using your routes
