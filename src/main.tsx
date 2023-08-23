@@ -1,5 +1,5 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { StrictMode } from "react"
+import ReactDOM from "react-dom/client"
 import {
   Outlet,
   RouterProvider,
@@ -7,12 +7,12 @@ import {
   Router,
   Route,
   RootRoute,
-} from '@tanstack/react-router';
+} from "@tanstack/react-router"
 
 // Create a root route
 const rootRoute = new RootRoute({
   component: Root,
-});
+})
 
 function Root() {
   return (
@@ -23,54 +23,54 @@ function Root() {
       <hr />
       <Outlet />
     </>
-  );
+  )
 }
 
 // Create an index route
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: Index,
-});
+})
 
 function Index() {
   return (
     <div>
       <h3>Welcome Home!</h3>
     </div>
-  );
+  )
 }
 
 const aboutRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: '/about',
+  path: "/about",
   component: About,
-});
+})
 
 function About() {
-  return <div>Hello from About!</div>;
+  return <div>Hello from About!!!!</div>
 }
 
 // Create the route tree using your routes
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
 
 // Create the router using your route tree
-const router = new Router({ routeTree });
+const router = new Router({ routeTree })
 
 // Register your router for maximum type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router;
+    router: typeof router
   }
 }
 
 // Render our app!
-const rootElement = document.getElementById('app')!;
+const rootElement = document.getElementById("app")!
 if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
+  const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
       <RouterProvider router={router} />
     </StrictMode>
-  );
+  )
 }
