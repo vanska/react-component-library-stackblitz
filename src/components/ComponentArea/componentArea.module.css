@@ -1,0 +1,14 @@
+.componentArea {
+  background-color: white;
+
+  --grid-size: 1rem;
+  background-size: var(--grid-size) var(--grid-size);
+
+  --stroke-color: #f1f1f1;
+  background-image: linear-gradient(
+      to right,
+      var(--stroke-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--stroke-color) 1px, transparent 1px);
+}
