@@ -1,17 +1,17 @@
+import {
+  Link,
+  Outlet,
+  RootRoute,
+  Route,
+  Router,
+  RouterProvider,
+} from "@tanstack/react-router"
 import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
-import {
-  Outlet,
-  RouterProvider,
-  Link,
-  Router,
-  Route,
-  RootRoute,
-} from "@tanstack/react-router"
-import { CarouselPage } from "./pages/CarouselPage"
 import "./index.css"
+import { CarouselPage } from "./pages/CarouselPage"
+import { ImageTextAndHighlightGridPage } from "./pages/ImageTextAndHighlightGrid"
 
-// Create a root route
 const rootRoute = new RootRoute({
   component: Root,
 })
@@ -19,54 +19,54 @@ const rootRoute = new RootRoute({
 function Root() {
   return (
     <>
-      <div>
-        <Link to="/">Home</Link> <Link to="/carousel">Carousel</Link>
-      </div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/carousel">Carousel</Link>
+        </li>
+        <li>
+          <Link to="/image-text-and-highlight-grid">
+            ImageTextAndHighlightGrid
+          </Link>
+        </li>
+      </ul>
       <hr />
       <Outlet />
     </>
   )
 }
 
-// Create an index route
-const indexRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: "/",
-  component: Index,
-})
+const routeTree = rootRoute.addChildren([
+  new Route({
+    getParentRoute: () => rootRoute,
+    path: "/",
+    component: () => <h1>Hello</h1>,
+  }),
+  new Route({
+    getParentRoute: () => rootRoute,
+    path: "/carousel",
+    component: () => <CarouselPage />,
+  }),
+  new Route({
+    getParentRoute: () => rootRoute,
+    path: "/image-text-and-highlight-grid",
+    component: () => <ImageTextAndHighlightGridPage />,
+  }),
+])
 
-function Index() {
-  return (
-    <div>
-      <h3>Welcome Home!</h3>
-    </div>
-  )
-}
-
-const aboutRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: "/carousel",
-  component: About,
-})
-
-function About() {
-  return <CarouselPage />
-}
-
-// Create the route tree using your routes
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
-
-// Create the router using your route tree
+// Create the router using route tree
 const router = new Router({ routeTree })
 
-// Register your router for maximum type safety
+// Register router for maximum type safety
 declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router
   }
 }
 
-// Render our app!
+// Render app to DOM
 const rootElement = document.getElementById("app")!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)

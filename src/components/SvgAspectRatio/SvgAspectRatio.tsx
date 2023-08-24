@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import { CSSProperties } from "react"
+import styles from "./svgAspectRatio.module.css"
 
 export type SvgAspectRatioProps = {
   width: number
@@ -19,7 +20,7 @@ export function SvgAspectRatio({
 }: SvgAspectRatioProps) {
   return (
     <svg
-      className={clsx("svg-aspect-ratio", className)}
+      className={clsx(styles.svg, className)}
       style={style}
       width={width}
       height={height}

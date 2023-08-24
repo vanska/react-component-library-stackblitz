@@ -1,0 +1,35 @@
+# Browsers that we support
+
+#
+
+# Tool to help with generating config
+
+# https://browsersl.ist/
+
+#
+
+# List of browsers and names for config
+
+# https://github.com/browserslist/browserslist#browsers
+
+#
+
+# Browserstack browsers and platforms
+
+#
+
+# https://www.browserstack.com/list-of-browsers-and-platforms
+
+defaults
+
+# https://support.apple.com/guide/iphone/supported-models-iphe3fa5df43/15.0/ios/15.0
+
+# Tailwind doesn't really support iOS 12 at all
+
+ios_saf >= 12.0
+
+# Ignore random browsers completely
+
+not op_mini all
+not kaios > 0
+not and_qq > 0
